@@ -12,9 +12,6 @@ const { runOCR, shutdownOCR } = require("./services/ocrService");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-});
 
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || "*" }));
 app.use(express.json());
@@ -32,7 +29,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Unexpected server error", detail: err.message });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT,'0.0.0.0', () => {
   console.log(`PCCS backend running on http://localhost:${PORT}`);
   console.log("Warming up OCR worker in the background (keeps later requests fast)...");
   // Fire-and-forget warmup: initializes the Tesseract worker so the FIRST real
