@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: "/api" });
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
+const api = axios.create({ baseURL: `${API_BASE}/api` });
 
 export const Auth = {
   login: (payload) => api.post("/auth/login", payload).then((r) => r.data),
@@ -10,8 +12,7 @@ export const Auth = {
 export const Inspections = {
   create: (formData) =>
     api
-      .post("/inspections", formData, { headers: { "Content-Type": "multipart/form-data" } })
-      .then((r) => r.data),
+      .post("/inspections",formData).then((r) => r.data),
   list: (params) => api.get("/inspections", { params }).then((r) => r.data),
   get: (id) => api.get(`/inspections/${id}`).then((r) => r.data)
 };

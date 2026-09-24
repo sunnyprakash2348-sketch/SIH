@@ -5,6 +5,7 @@ import { Inspections } from "../api/client";
 import StatusBadge from "../components/StatusBadge";
 import ScoreGauge from "../components/ScoreGauge";
 import CheckRow from "../components/CheckRow";
+import { apiUrl } from '../api';
 
 export default function Results() {
   const { id } = useParams();
@@ -81,7 +82,7 @@ export default function Results() {
         </div>
         <div className="glass p-3 flex items-center justify-center">
           {inspection.imagePath ? (
-            <img src={inspection.imagePath} alt="Label" className="max-h-40 object-contain" />
+            <img src={apiUrl(inspection.imagePath)} alt="Label" className="max-h-40 object-contain" />
           ) : (
             <p className="text-xs text-ink/30">No image</p>
           )}
