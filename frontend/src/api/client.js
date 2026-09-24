@@ -1,6 +1,7 @@
 import axios from "axios";
+import { apiUrl } from "../api";
 
-const api = axios.create({ baseURL: "/api" });
+const api = axios.create({ baseURL: apiUrl("/api") });
 
 export const Auth = {
   login: (payload) => api.post("/auth/login", payload).then((r) => r.data),
