@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  font-variant-numeric: tabular-nums;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(255, 255, 255, 0.06), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(255, 255, 255, 0.04), transparent 55%),
+    radial-gradient(ellipse 800px 600px at 50% 100%, rgba(255, 255, 255, 0.03), transparent 60%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+.ledger-row {
+  @apply border-b border-white/10;
+}
+
+/* Core glassmorphism panel used for cards, forms, tables */
+.glass {
+  @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+}
+
+.glass-strong {
+  @apply bg-white/[0.07] backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+}
+
+.input-glass {
+  @apply w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2 text-sm text-ink placeholder-ink/30 backdrop-blur;
+}
+.input-glass:focus {
+  @apply outline-none ring-2 ring-white/40 border-white/30;
+}
+
+.btn-primary {
+  @apply bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-colors;
+}
+
+.btn-outline {
+  @apply border border-white/20 text-ink rounded-lg hover:bg-white/5 transition-colors;
+}
+
+@media print {
+  body {
+    background: white;
+    background-image: none;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+
+.print-only {
+  display: none;
+}
